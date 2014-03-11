@@ -1,4 +1,3 @@
-package KillerSudokuSolver
 import org.neo4j.graphdb.RelationshipType
 
 object KnowsRelationship extends RelationshipType {

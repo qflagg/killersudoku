@@ -1,5 +1,3 @@
-package KillerSudokuSolver
-
 import org.neo4j.graphdb.factory.GraphDatabaseFactory
 import org.neo4j.graphdb.GraphDatabaseService
 import org.neo4j.graphdb.Direction
@@ -7,18 +5,20 @@ import org.neo4j.graphdb.Direction
 object KillerSudokuSolver {
 
   def main(args: Array[String]): Unit = {
-    val puzzleURL = "http://www.calcudoku.org/killersudoku/en/2014-01-14/9/1"
-    val neo4j = "/home/doccali/Remote/Downloads/temp/neo4j-community-2.0.0/data/graph.db/"
+    println("sadf")
+    val puzzleURL = "http://www.calcudoku.org/killersudoku/en/2014-03-10/9/1"
+    val neo4j = "/Users/qflagg/Downloads/neo4j-community-2.0.1/data/graph.db/"
 
     val puzzleDifficulty = puzzleURL.split("/").last
     val dateRegex = """\d\d\d\d-\d\d-\d\d""".r
     val puzzleDate = dateRegex.findFirstIn(puzzleURL).get
     //val puzzle = DownloadPuzzle.getPuzzle(puzzleURL)
+    
 
     val graphDb = new GraphDatabaseFactory().newEmbeddedDatabase(neo4j)
     registerShutdownHook(graphDb);
 
-    try {
+    try {      
       val tx = graphDb.beginTx()
       val firstNode = graphDb.createNode()
       firstNode.setProperty("message", "Hello, ")
@@ -30,8 +30,8 @@ object KillerSudokuSolver {
       print(relationship.getProperty("message"))
       print(secondNode.getProperty("message"))
       firstNode.getSingleRelationship( KnowsRelationship, Direction.OUTGOING ).delete()
-      firstNode.delete()
-      secondNode.delete()
+      //firstNode.delete()
+      //secondNode.delete()
       tx.success()
     }
   }

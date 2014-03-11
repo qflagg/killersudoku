@@ -1,4 +1,3 @@
-package KillerSudokuSolver
 import scalaj.http.Http
 
 object DownloadPuzzle {
