@@ -1,6 +1,7 @@
-import org.neo4j.graphdb.factory.GraphDatabaseFactory
-import org.neo4j.graphdb.GraphDatabaseService
 import org.neo4j.graphdb.Direction
+import org.neo4j.graphdb.GraphDatabaseService
+import org.neo4j.graphdb.factory.GraphDatabaseFactory
+import pingpong.actor.example.db.relationships.KnowsRelationship
 
 object KillerSudokuSolver {
 

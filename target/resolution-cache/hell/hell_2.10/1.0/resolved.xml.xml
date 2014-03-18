@@ -4,7 +4,7 @@
 		module="hell_2.10"
 		revision="1.0"
 		status="integration"
-		publication="20140310150849"
+		publication="20140317142749"
 	>
 		<description>
 		hell
@@ -33,6 +33,7 @@
 	<dependencies>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.10.3" conf="compile->default(compile)"/>
 		<dependency org="org.scalaj" name="scalaj-http_2.10" rev="0.3.12" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.akka" name="akka-actor_2.10" rev="2.1.1" conf="compile->default(compile)"/>
 		<exclude org="org.scala-lang" module="scala-library" artifact="*" type="jar" ext="*" matcher="exact"/>
 		<exclude org="org.scala-lang" module="scala-compiler" artifact="*" type="jar" ext="*" matcher="exact"/>
 		<override org="org.scala-lang" module="scala-library" matcher="exact" rev="2.10.3"/>
