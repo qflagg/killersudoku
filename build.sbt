@@ -1,11 +1,13 @@
-name := "hell"
+name := "KillerSudokuSolver"
 
-version := "1.0"
+version := "0.1"
 
 scalaVersion := "2.10.3"
 
 resolvers += "Typesafe Repository" at "http://repo.typesafe.com/typesafe/releases/"
 
-libraryDependencies += "org.scalaj" %% "scalaj-http" % "0.3.12"
 
-libraryDependencies += "com.typesafe.akka" %% "akka-actor" % "2.1.1"
+libraryDependencies ++= Seq(
+	"com.typesafe.akka" %% "akka-actor" % "2.1.1",
+	"com.assembla.scala-incubator" %% "graph-core" % "1.8.0"
+)
