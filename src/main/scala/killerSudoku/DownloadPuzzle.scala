@@ -12,7 +12,7 @@ object DownloadPuzzle {
     val cageRegex = """(?<=wwe_\()[\d|-]*""".r
     val puzzle = puzzleRegex.findAllIn(calcudokuHTML)
       .flatMap(puzzle => cellRegex.findAllIn(puzzle))
-    for (p <- puzzle) yield {
+    val puzzleSeq = (for (p <- puzzle) yield {
       (sumRegex.findFirstIn(p).get
         .split("\\+")
         .map(_.toInt)
@@ -20,7 +20,23 @@ object DownloadPuzzle {
         cageRegex.findAllIn(p)
         .map(_.split("-")
           .map(_.toInt)
-          .reduce(_ - _)))
-    }
+          .reduce(_ - _)).toSeq.par.seq)
+    }).toSeq.par.seq
+
+//    val cellSeq = for (i <- 0 to 80) yield {
+//      Cell(i, Set(1, 2, 3, 4, 5, 6, 7, 8, 9))
+//    }
+//
+//    val sumCageSeq = for (s <- puzzleSeq) yield {
+//      SumCage(s._1, List(1, 2, 3, 4, 5, 6, 7, 8, 9).combinations(s._2.length).toSeq.par.seq.map(_.toSet))
+//    }
+//
+//    val possibilityCageSeq = for (i <- 1 to 27) yield {
+//      PossibilityCage(scala.collection.mutable.Set(1, 2, 3, 4, 5, 6, 7, 8, 9))
+//    }
+    
+    
+    puzzleSeq
   }
+
 }
